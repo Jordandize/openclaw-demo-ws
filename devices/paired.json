@@ -1,0 +1,73 @@
+{
+  "18aad83cd40f799940174a8b5a86309cf3c35ae878d34e96c0983d214678fcaf": {
+    "deviceId": "18aad83cd40f799940174a8b5a86309cf3c35ae878d34e96c0983d214678fcaf",
+    "publicKey": "geBxsOr1LLaRdfb3FUG3Tiks0QukXDhN9k4_macm8BA",
+    "platform": "linux",
+    "clientId": "gateway-client",
+    "clientMode": "backend",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.read"
+    ],
+    "approvedScopes": [
+      "operator.read"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "GCixYOfPAksCIBx5rTghTyuA-NbNAkH1zEbYGlqiqgk",
+        "role": "operator",
+        "scopes": [
+          "operator.read"
+        ],
+        "createdAtMs": 1777846711884
+      }
+    },
+    "createdAtMs": 1777846711884,
+    "approvedAtMs": 1777846711884,
+    "displayName": "gateway:health"
+  },
+  "11d358cdaa791c86092a0044a92051acc22fb7c487d65b5ac076d0b2c57a5933": {
+    "deviceId": "11d358cdaa791c86092a0044a92051acc22fb7c487d65b5ac076d0b2c57a5933",
+    "publicKey": "S_facmoJzp-brjwUaldrxJ8HYbanoDR_NpVDt3q85LI",
+    "platform": "Win32",
+    "clientId": "openclaw-control-ui",
+    "clientMode": "webchat",
+    "role": "operator",
+    "roles": [
+      "operator"
+    ],
+    "scopes": [
+      "operator.admin",
+      "operator.read",
+      "operator.write",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "approvedScopes": [
+      "operator.admin",
+      "operator.read",
+      "operator.write",
+      "operator.approvals",
+      "operator.pairing"
+    ],
+    "tokens": {
+      "operator": {
+        "token": "omgwWMhd4xnyw9RqvaBg8f5HG__ElHFejuGmQc__a6I",
+        "role": "operator",
+        "scopes": [
+          "operator.admin",
+          "operator.approvals",
+          "operator.pairing",
+          "operator.read",
+          "operator.write"
+        ],
+        "createdAtMs": 1777846949602
+      }
+    },
+    "createdAtMs": 1777846949602,
+    "approvedAtMs": 1777846949602
+  }
+}

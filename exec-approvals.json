@@ -1,0 +1,9 @@
+{
+  "version": 1,
+  "socket": {
+    "path": "/home/kostia/.openclaw/exec-approvals.sock",
+    "token": "gxEqp752vEFioIg-XIWrQGT9_Iy50te5"
+  },
+  "defaults": {},
+  "agents": {}
+}

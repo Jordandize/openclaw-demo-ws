@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "lastGood": {
+    "openai": "openai:default"
+  },
+  "usageStats": {
+    "openai:default": {
+      "errorCount": 0,
+      "lastUsed": 1777848053685
+    }
+  }
+}

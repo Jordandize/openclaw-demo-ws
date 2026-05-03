@@ -1,0 +1,37 @@
+{
+  "entries": {
+    "/home/kostia/.openclaw/openclaw.json": {
+      "lastKnownGood": {
+        "hash": "98e6c1483dee285f18dda6e9122516a14df4d971e0e539a93fb01972688db602",
+        "bytes": 2895,
+        "mtimeMs": 1777847702039.22,
+        "ctimeMs": 1777847702039.22,
+        "dev": "2080",
+        "ino": "638384",
+        "mode": 384,
+        "nlink": 1,
+        "uid": 1000,
+        "gid": 1000,
+        "hasMeta": true,
+        "gatewayMode": "local",
+        "observedAt": "2026-05-03T22:35:34.909Z"
+      },
+      "lastObservedSuspiciousSignature": null,
+      "lastPromotedGood": {
+        "hash": "98e6c1483dee285f18dda6e9122516a14df4d971e0e539a93fb01972688db602",
+        "bytes": 2895,
+        "mtimeMs": 1777847702039.22,
+        "ctimeMs": 1777847702039.22,
+        "dev": "2080",
+        "ino": "638384",
+        "mode": 33152,
+        "nlink": 1,
+        "uid": 1000,
+        "gid": 1000,
+        "hasMeta": true,
+        "gatewayMode": "local",
+        "observedAt": "2026-05-03T22:35:34.242Z"
+      }
+    }
+  }
+}

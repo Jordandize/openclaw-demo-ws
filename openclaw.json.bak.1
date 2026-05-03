@@ -1,0 +1,86 @@
+{
+  "agents": {
+    "defaults": {
+      "workspace": "/home/kostia/.openclaw/workspace",
+      "models": {
+        "openai/gpt-5.4": {
+          "alias": "GPT"
+        },
+        "openai/gpt-5.4-mini": {}
+      },
+      "model": {
+        "primary": "openai/gpt-5.4-mini"
+      }
+    }
+  },
+  "gateway": {
+    "mode": "local",
+    "auth": {
+      "mode": "token",
+      "token": "85e395a3e83ca53fc111f67b4d1243cbb12d56b1146da521"
+    },
+    "port": 18789,
+    "bind": "loopback",
+    "tailscale": {
+      "mode": "off",
+      "resetOnExit": false
+    },
+    "controlUi": {
+      "allowInsecureAuth": true
+    },
+    "nodes": {
+      "denyCommands": [
+        "camera.snap",
+        "camera.clip",
+        "screen.record",
+        "contacts.add",
+        "calendar.add",
+        "reminders.add",
+        "sms.send",
+        "sms.search"
+      ]
+    }
+  },
+  "session": {
+    "dmScope": "per-channel-peer"
+  },
+  "tools": {
+    "profile": "coding"
+  },
+  "auth": {
+    "profiles": {
+      "openai:default": {
+        "provider": "openai",
+        "mode": "api_key"
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "groups": {
+        "*": {
+          "requireMention": true
+        }
+      },
+      "botToken": "8721572049:AAFR1xsLbNqNvGudB05YzebsQfymQuFxDtc"
+    }
+  },
+  "wizard": {
+    "lastRunAt": "2026-05-03T22:18:21.425Z",
+    "lastRunVersion": "2026.4.22",
+    "lastRunCommand": "onboard",
+    "lastRunMode": "local"
+  },
+  "meta": {
+    "lastTouchedVersion": "2026.4.22",
+    "lastTouchedAt": "2026-05-03T22:18:30.428Z"
+  },
+  "plugins": {
+    "entries": {
+      "openai": {
+        "enabled": true
+      }
+    }
+  }
+}
