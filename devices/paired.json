@@ -3,8 +3,8 @@
     "deviceId": "18aad83cd40f799940174a8b5a86309cf3c35ae878d34e96c0983d214678fcaf",
     "publicKey": "geBxsOr1LLaRdfb3FUG3Tiks0QukXDhN9k4_macm8BA",
     "platform": "linux",
-    "clientId": "gateway-client",
-    "clientMode": "backend",
+    "clientId": "cli",
+    "clientMode": "cli",
     "role": "operator",
     "roles": [
       "operator"
@@ -26,8 +26,7 @@
       }
     },
     "createdAtMs": 1777846711884,
-    "approvedAtMs": 1777846711884,
-    "displayName": "gateway:health"
+    "approvedAtMs": 1777846711884
   },
   "11d358cdaa791c86092a0044a92051acc22fb7c487d65b5ac076d0b2c57a5933": {
     "deviceId": "11d358cdaa791c86092a0044a92051acc22fb7c487d65b5ac076d0b2c57a5933",

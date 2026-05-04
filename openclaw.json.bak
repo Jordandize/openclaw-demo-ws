@@ -1,7 +1,7 @@
 {
   "agents": {
     "defaults": {
-      "workspace": "/home/kostia/.openclaw/workspace",
+      "workspace": "/home/koba0119/.openclaw/workspace",
       "models": {
         "openai/gpt-5.4": {
           "alias": "GPT"
@@ -10,18 +10,88 @@
       },
       "model": {
         "primary": "openai/gpt-5.4-mini"
+      },
+      "subagents": {
+        "allowAgents": ["boss", "gala", "buck"],
+        "requireAgentId": true,
+        "maxSpawnDepth": 2,
+        "maxChildrenPerAgent": 5,
+        "maxConcurrent": 8,
+        "runTimeoutSeconds": 900,
+        "model": "openai/gpt-5.4-mini"
       }
     },
     "list": [
       {
-        "id": "main"
+        "id": "boss",
+        "default": true,
+        "name": "BOSS",
+        "identity": {
+          "name": "BOSS",
+          "emoji": "🧠",
+          "theme": "calm orchestrator"
+        },
+        "workspace": "/home/koba0119/.openclaw/workspace/boss",
+        "agentDir": "/home/koba0119/.openclaw/agents/boss/agent",
+        "model": "openai/gpt-5.4",
+        "subagents": {
+          "allowAgents": ["gala", "buck"]
+        },
+        "tools": {
+          "allow": [
+            "read", "write", "edit",
+            "sessions_list", "sessions_history",
+            "sessions_send", "sessions_spawn",
+            "sessions_yield", "subagents", "session_status",
+            "agents_list"
+          ],
+          "deny": ["exec", "apply_patch", "browser"]
+        }
       },
       {
         "id": "gala",
-        "name": "gala",
-        "workspace": "/home/kostia/.openclaw/workspace/gala",
-        "agentDir": "/home/kostia/.openclaw/agents/gala/agent",
-        "model": "openai/gpt-5.4"
+        "name": "GALA",
+        "identity": {
+          "name": "GALA",
+          "emoji": "👗",
+          "theme": "personal stylist"
+        },
+        "workspace": "/home/koba0119/.openclaw/workspace/gala",
+        "agentDir": "/home/koba0119/.openclaw/agents/gala/agent",
+        "model": "openai/gpt-5.4",
+        "subagents": {
+          "allowAgents": ["buck"]
+        },
+        "tools": {
+          "allow": [
+            "read", "write",
+            "browser", "web", "web-fetch",
+            "sessions_send", "sessions_history", "session_status"
+          ],
+          "deny": ["exec", "apply_patch", "sessions_spawn"]
+        }
+      },
+      {
+        "id": "buck",
+        "name": "BUCK",
+        "identity": {
+          "name": "BUCK",
+          "emoji": "💰",
+          "theme": "personal finance hawk"
+        },
+        "workspace": "/home/koba0119/.openclaw/workspace/buck",
+        "agentDir": "/home/koba0119/.openclaw/agents/buck/agent",
+        "model": "openai/gpt-5.4",
+        "subagents": {
+          "allowAgents": ["gala"]
+        },
+        "tools": {
+          "allow": [
+            "read", "write",
+            "sessions_send", "sessions_history", "session_status"
+          ],
+          "deny": ["exec", "apply_patch", "browser", "web", "web-fetch", "sessions_spawn"]
+        }
       }
     ]
   },
@@ -57,7 +127,11 @@
     "dmScope": "per-channel-peer"
   },
   "tools": {
-    "profile": "coding"
+    "profile": "coding",
+    "agentToAgent": {
+      "enabled": true,
+      "allow": ["boss", "gala", "buck"]
+    }
   },
   "auth": {
     "profiles": {
@@ -70,16 +144,41 @@
   "channels": {
     "telegram": {
       "enabled": true,
+      "defaultAccount": "boss",
       "groups": {
-        "*": {
-          "requireMention": true
+        "-5267353148": {
+          "requireMention": false,
+          "allowFrom": ["397587983"]
         }
       },
-      "botToken": "8721572049:AAFR1xsLbNqNvGudB05YzebsQfymQuFxDtc",
       "accounts": {
+        "boss": {
+          "enabled": true,
+          "botToken": "8721572049:AAFR1xsLbNqNvGudB05YzebsQfymQuFxDtc",
+          "dmPolicy": "allowlist",
+          "allowFrom": ["397587983"]
+        },
         "gala": {
           "enabled": true,
-          "botToken": "8047173047:AAHtEBc7Whn3y-PWpWqmR5Cswz3ZFOjYI9c"
+          "botToken": "8047173047:AAHtEBc7Whn3y-PWpWqmR5Cswz3ZFOjYI9c",
+          "dmPolicy": "disabled",
+          "groups": {
+            "-5267353148": {
+              "requireMention": true,
+              "allowFrom": ["397587983"]
+            }
+          }
+        },
+        "buck": {
+          "enabled": true,
+          "botToken": "8681335071:AAHj9Mfo68w5xpZweI0Hib8ZwZS9DQOGsus",
+          "dmPolicy": "disabled",
+          "groups": {
+            "-5267353148": {
+              "requireMention": true,
+              "allowFrom": ["397587983"]
+            }
+          }
         }
       }
     }
@@ -92,7 +191,7 @@
   },
   "meta": {
     "lastTouchedVersion": "2026.4.22",
-    "lastTouchedAt": "2026-05-03T22:27:02.348Z"
+    "lastTouchedAt": "2026-05-04T20:08:00.000Z"
   },
   "plugins": {
     "entries": {
@@ -104,11 +203,42 @@
   "bindings": [
     {
       "type": "route",
+      "agentId": "boss",
+      "match": {
+        "channel": "telegram",
+        "accountId": "boss"
+      }
+    },
+    {
+      "type": "route",
       "agentId": "gala",
       "match": {
         "channel": "telegram",
         "accountId": "gala"
       }
+    },
+    {
+      "type": "route",
+      "agentId": "buck",
+      "match": {
+        "channel": "telegram",
+        "accountId": "buck"
+      }
     }
-  ]
+  ],
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "telegram-group-relay": {
+          "enabled": true,
+          "env": {
+            "OPENCLAW_DEMO_GROUP_ID": "-5267353148",
+            "OPENCLAW_DEMO_BOT_USERNAMES": "{\"boss\":\"kostiasbossbot\",\"gala\":\"kostiasgalabot\",\"buck\":\"kostiasbuckbot\"}",
+            "OPENCLAW_DEMO_MAX_HOPS": "6"
+          }
+        }
+      }
+    }
+  }
 }

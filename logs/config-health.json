@@ -32,6 +32,39 @@
         "gatewayMode": "local",
         "observedAt": "2026-05-03T22:35:34.242Z"
       }
+    },
+    "/home/koba0119/.openclaw/openclaw.json": {
+      "lastKnownGood": {
+        "hash": "008080e2f09fbc16390416cc546e013dd258eb20678ff6c52617b7913880c222",
+        "bytes": 6612,
+        "mtimeMs": 1777925843581.7102,
+        "ctimeMs": 1777925843591.7117,
+        "dev": "2080",
+        "ino": "166202",
+        "mode": 384,
+        "nlink": 1,
+        "uid": 1000,
+        "gid": 1000,
+        "hasMeta": true,
+        "gatewayMode": "local",
+        "observedAt": "2026-05-04T20:17:40.989Z"
+      },
+      "lastObservedSuspiciousSignature": null,
+      "lastPromotedGood": {
+        "hash": "008080e2f09fbc16390416cc546e013dd258eb20678ff6c52617b7913880c222",
+        "bytes": 6612,
+        "mtimeMs": 1777925843581.7102,
+        "ctimeMs": 1777925843591.7117,
+        "dev": "2080",
+        "ino": "166202",
+        "mode": 33152,
+        "nlink": 1,
+        "uid": 1000,
+        "gid": 1000,
+        "hasMeta": true,
+        "gatewayMode": "local",
+        "observedAt": "2026-05-04T20:17:29.191Z"
+      }
     }
   }
 }
