@@ -35,10 +35,10 @@
     },
     "/home/koba0119/.openclaw/openclaw.json": {
       "lastKnownGood": {
-        "hash": "008080e2f09fbc16390416cc546e013dd258eb20678ff6c52617b7913880c222",
-        "bytes": 6612,
-        "mtimeMs": 1777925843581.7102,
-        "ctimeMs": 1777925843591.7117,
+        "hash": "692cf4f654e0ae82818e48eaaf6470d59c1abcfce0ffde109247862bf568ca98",
+        "bytes": 6624,
+        "mtimeMs": 1777927639588.0862,
+        "ctimeMs": 1777927639588.0862,
         "dev": "2080",
         "ino": "166202",
         "mode": 384,
@@ -47,14 +47,14 @@
         "gid": 1000,
         "hasMeta": true,
         "gatewayMode": "local",
-        "observedAt": "2026-05-04T20:17:40.989Z"
+        "observedAt": "2026-05-04T20:48:17.714Z"
       },
       "lastObservedSuspiciousSignature": null,
       "lastPromotedGood": {
-        "hash": "008080e2f09fbc16390416cc546e013dd258eb20678ff6c52617b7913880c222",
-        "bytes": 6612,
-        "mtimeMs": 1777925843581.7102,
-        "ctimeMs": 1777925843591.7117,
+        "hash": "692cf4f654e0ae82818e48eaaf6470d59c1abcfce0ffde109247862bf568ca98",
+        "bytes": 6624,
+        "mtimeMs": 1777927639588.0862,
+        "ctimeMs": 1777927639588.0862,
         "dev": "2080",
         "ino": "166202",
         "mode": 33152,
@@ -63,7 +63,7 @@
         "gid": 1000,
         "hasMeta": true,
         "gatewayMode": "local",
-        "observedAt": "2026-05-04T20:17:29.191Z"
+        "observedAt": "2026-05-04T20:47:46.861Z"
       }
     }
   }

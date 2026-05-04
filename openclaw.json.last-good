@@ -190,7 +190,7 @@
       "enabled": true,
       "defaultAccount": "boss",
       "groups": {
-        "-5267353148": {
+        "-1003847438670": {
           "requireMention": false,
           "allowFrom": [
             "397587983"
@@ -211,7 +211,7 @@
           "botToken": "8047173047:AAHtEBc7Whn3y-PWpWqmR5Cswz3ZFOjYI9c",
           "dmPolicy": "disabled",
           "groups": {
-            "-5267353148": {
+            "-1003847438670": {
               "requireMention": true,
               "allowFrom": [
                 "397587983"
@@ -224,7 +224,7 @@
           "botToken": "8681335071:AAHj9Mfo68w5xpZweI0Hib8ZwZS9DQOGsus",
           "dmPolicy": "disabled",
           "groups": {
-            "-5267353148": {
+            "-1003847438670": {
               "requireMention": true,
               "allowFrom": [
                 "397587983"
@@ -288,7 +288,7 @@
         "telegram-group-relay": {
           "enabled": true,
           "env": {
-            "OPENCLAW_DEMO_GROUP_ID": "-5267353148",
+            "OPENCLAW_DEMO_GROUP_ID": "-1003847438670",
             "OPENCLAW_DEMO_BOT_USERNAMES": "{\"boss\":\"kostiasbossbot\",\"gala\":\"kostiasgalabot\",\"buck\":\"kostiasbuckbot\"}",
             "OPENCLAW_DEMO_MAX_HOPS": "6"
           }

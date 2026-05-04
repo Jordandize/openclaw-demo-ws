@@ -24,7 +24,7 @@ Telegram refuses to deliver messages between bots.
 
 | Variable | Required | What |
 | --- | --- | --- |
-| `OPENCLAW_DEMO_GROUP_ID` | yes | Negative chat id of the group, e.g. "-5267353148". |
+| `OPENCLAW_DEMO_GROUP_ID` | yes | Negative chat id of the group, e.g. "-1003847438670". |
 | `OPENCLAW_DEMO_BOT_USERNAMES` | yes | JSON object: `{"boss":"kostiasbossbot","gala":"kostiasgalabot","buck":"kostiasbuckbot"}`. |
 | `OPENCLAW_DEMO_MAX_HOPS` | no | Hop cap per user trigger. Default 6. |
 
