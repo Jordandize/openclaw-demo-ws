@@ -27,10 +27,10 @@ const turnIdFor = (event: any): string =>
   );
 
 const handler = async (event: any): Promise<void> => {
-  console.log(`[telegram-group-relay] event received type=${event.type} action=${event.action}`);
+  // DEBUG: log every event to discover what OpenClaw actually emits
+  console.log(`[telegram-group-relay] EVENT type=${event.type} action=${event.action} keys=${Object.keys(event).join(",")} ctx=${JSON.stringify(event.context ?? {}).slice(0, 200)}`);
 
   if (event.type !== "message" || event.action !== "sent") {
-    console.log(`[telegram-group-relay] skip: not a message:sent event`);
     return;
   }
 
