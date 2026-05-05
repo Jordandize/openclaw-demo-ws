@@ -16,14 +16,9 @@ const cfg: Cfg = {
   maxHops: Number(process.env.OPENCLAW_DEMO_MAX_HOPS ?? "6"),
 };
 
-// Hop counter scoped to the originating user message id. Reset when a
-// new user-authored message arrives in the group.
+// Hop counter scoped to the originating user message id.
 const hopCounter = new Map<string, number>();
 
-// Track the most recent triggering user message per group so we can
-// scope the hop cap. The Gateway provides the "rootMessageId" (or
-// equivalent) on the event metadata; if not, we fall back to the
-// session key, which is the same for an entire user turn.
 const turnIdFor = (event: any): string =>
   String(
     event.context?.metadata?.rootMessageId ??
@@ -72,22 +67,26 @@ const handler = async (event: any): Promise<void> => {
   }
   hopCounter.set(turnId, hops);
 
-  // Inject the post into the recipient's group session as inbound.
-  // The session key shape for Telegram groups is:
-  //   agent:<agentId>:telegram:group:<groupId>
-  const sessionKey = `agent:${recipient}:telegram:group:${cfg.groupId}`;
+  // Wake the recipient agent and deliver its reply back to the group.
+  // --agent          which agent to run
+  // --message        GALA/BOSS's post (full text, so recipient has context)
+  // --deliver        post the response back to a channel
+  // --reply-account  use the recipient's own bot account to post
+  // --reply-channel  target channel
+  // --reply-to       target chat (the group id)
   const senderHandle = cfg.botUsernames[fromAccount];
-  const injected =
-    `(via @${senderHandle} in the group)\n\n` + content.trim();
+  const injected = `(via @${senderHandle} in the group)\n\n${content.trim()}`;
 
   const child = spawn(
     "openclaw",
     [
       "agent",
       "--agent", recipient,
-      "--session-key", sessionKey,
-      "--from", `telegram-group:${cfg.groupId}:agent:${fromAccount}`,
       "--message", injected,
+      "--deliver",
+      "--reply-account", recipient,
+      "--reply-channel", "telegram",
+      "--reply-to", cfg.groupId,
     ],
     { detached: true, stdio: "ignore" }
   );
