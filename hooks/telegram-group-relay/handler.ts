@@ -27,20 +27,38 @@ const turnIdFor = (event: any): string =>
   );
 
 const handler = async (event: any): Promise<void> => {
-  if (event.type !== "message" || event.action !== "sent") return;
+  console.log(`[telegram-group-relay] event received type=${event.type} action=${event.action}`);
+
+  if (event.type !== "message" || event.action !== "sent") {
+    console.log(`[telegram-group-relay] skip: not a message:sent event`);
+    return;
+  }
 
   const ctx = event.context ?? {};
-  if (ctx.channelId !== "telegram") return;
+  console.log(`[telegram-group-relay] ctx.channelId=${ctx.channelId} ctx.channel=${ctx.channel} ctx.to=${ctx.to}`);
+
+  if (ctx.channelId !== "telegram") {
+    console.log(`[telegram-group-relay] skip: channelId "${ctx.channelId}" !== "telegram"`);
+    return;
+  }
 
   // Only watch the configured demo group.
   const to = String(ctx.to ?? "");
-  if (to !== cfg.groupId) return;
+  if (to !== cfg.groupId) {
+    console.log(`[telegram-group-relay] skip: to "${to}" !== groupId "${cfg.groupId}"`);
+    return;
+  }
 
   // Identify the sending agent (the bot account behind this post).
   const fromAccount: AgentId | undefined = ctx.metadata?.accountId;
-  if (!fromAccount || !(fromAccount in cfg.botUsernames)) return;
+  console.log(`[telegram-group-relay] fromAccount=${fromAccount} metadata=${JSON.stringify(ctx.metadata)}`);
+  if (!fromAccount || !(fromAccount in cfg.botUsernames)) {
+    console.log(`[telegram-group-relay] skip: fromAccount "${fromAccount}" not in botUsernames ${JSON.stringify(Object.keys(cfg.botUsernames))}`);
+    return;
+  }
 
   const content: string = ctx.content ?? "";
+  console.log(`[telegram-group-relay] content="${content.slice(0, 120)}"`);
 
   // Find the first managed-bot @-mention that isn't the sender.
   let recipient: AgentId | null = null;
@@ -54,7 +72,12 @@ const handler = async (event: any): Promise<void> => {
   }
 
   // No mention → chain ends naturally (BOSS's final wrap-up).
-  if (!recipient) return;
+  if (!recipient) {
+    console.log(`[telegram-group-relay] skip: no managed-bot @-mention found in content`);
+    return;
+  }
+
+  console.log(`[telegram-group-relay] relaying from ${fromAccount} to ${recipient}`);
 
   // Hop cap.
   const turnId = turnIdFor(event);
@@ -66,6 +89,7 @@ const handler = async (event: any): Promise<void> => {
     return;
   }
   hopCounter.set(turnId, hops);
+  console.log(`[telegram-group-relay] hop ${hops}/${cfg.maxHops} for turn=${turnId}`);
 
   // Wake the recipient agent and deliver its reply back to the group.
   // --agent          which agent to run
@@ -91,6 +115,7 @@ const handler = async (event: any): Promise<void> => {
     { detached: true, stdio: "ignore" }
   );
   child.unref();
+  console.log(`[telegram-group-relay] spawned openclaw agent --agent ${recipient} (pid=${child.pid})`);
 };
 
 export default handler;
